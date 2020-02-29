@@ -6,7 +6,7 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-const isProd = process.env.NODE_ENV === 'production'
+// const isProd = process.env.NODE_ENV === 'production'
 
 // vue.config.js
 const vueConfig = {
