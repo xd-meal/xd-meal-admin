@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 
 import app from './modules/app'
 import user from './modules/user'
+import dishes from './modules/dishes'
+import department from './modules/department'
 
 // default router permission control
 import permission from './modules/permission'
@@ -17,7 +19,9 @@ export default new Vuex.Store({
   modules: {
     app,
     user,
-    permission
+    permission,
+    dishes,
+    department
   },
   state: {
 
