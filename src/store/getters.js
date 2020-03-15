@@ -8,8 +8,8 @@ const getters = {
   welcome: state => state.user.welcome,
   role: state => state.user.role,
   userInfo: state => state.user.info,
-  addRouters: state => state.permission.addRouters
-  // lang: state => state.i18n.lang
+  addRouters: state => state.permission.addRouters,
+  dishList: state => state.dish.list
 }
 
 export default getters
