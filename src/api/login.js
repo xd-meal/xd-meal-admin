@@ -24,8 +24,8 @@ export function getInfo () {
 
 export function logout () {
   return axios({
-    url: '/auth/logout',
-    method: 'post',
+    url: '/user/logout',
+    method: 'get',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
     }

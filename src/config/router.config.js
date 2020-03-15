@@ -39,7 +39,7 @@ export const asyncRouterMap = [
       {
         path: '/dining',
         redirect: '/dining/add',
-        component: PageView,
+        component: RouteView,
         meta: { title: '餐次管理', icon: 'bars', role: [1, 2] },
         children: [
           {
@@ -50,8 +50,8 @@ export const asyncRouterMap = [
           },
           {
             path: '/dining/list',
-            name: 'StepForm',
-            component: () => import('@/views/form/stepForm/StepForm'),
+            name: 'DiningList',
+            component: () => import('@/views/dining/List'),
             meta: { title: '餐次列表', keepAlive: true, role: [1, 2] }
           },
           {
@@ -66,7 +66,7 @@ export const asyncRouterMap = [
       {
         path: '/dish',
         name: 'dish',
-        component: () => import('@/views/result/Success'),
+        component: () => import('@/views/dish/List'),
         meta: { title: '菜品管理', icon: 'bell', role: [2] }
       },
 
