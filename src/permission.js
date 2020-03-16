@@ -29,6 +29,17 @@ router.beforeEach((to, from, next) => {
             store.dispatch('GenerateRoutes', role).then(() => {
               // 根据roles权限生成可访问的路由表
               // 动态添加可访问路由表
+              if (role < 1) {
+                notification.error({
+                  message: '错误',
+                  description: '无权访问，即将返回首页'
+                })
+                setTimeout(() => {
+                  window.location = '/'
+                }, 1500)
+                return
+              }
+              store.dispatch('FetchDishList')
               router.addRoutes(store.getters.addRouters)
               const redirect = decodeURIComponent(from.query.redirect || to.path)
               if (to.path === redirect) {
@@ -43,12 +54,15 @@ router.beforeEach((to, from, next) => {
           .catch(() => {
             notification.error({
               message: '错误',
-              description: '请求用户信息失败，请重试'
+              description: '请求用户信息失败，即将返回登录界面'
             })
-            store.dispatch('Logout').then(() => {
+            setTimeout(() => {
               window.location = '/'
-              // next({ path: '/user/login', query: { redirect: to.fullPath } })
-            })
+            }, 1500)
+            // store.dispatch('Logout').then(() => {
+            //
+            //   // next({ path: '/user/login', query: { redirect: to.fullPath } })
+            // })
           })
       } else {
         next()

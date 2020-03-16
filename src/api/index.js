@@ -1,6 +1,5 @@
 const api = {
-  Logout: '/auth/logout',
-  ForgePassword: '/auth/forge-password',
+  Logout: '/user/logout',
   // get my info
   UserInfo: '/user/info'
 }
