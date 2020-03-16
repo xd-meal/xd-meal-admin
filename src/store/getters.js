@@ -9,7 +9,9 @@ const getters = {
   role: state => state.user.role,
   userInfo: state => state.user.info,
   addRouters: state => state.permission.addRouters,
-  dishList: state => state.dish.list
+  dishList: state => state.dish.list,
+  diningList: state => state.dining.list,
+  diningListArray: state => Object.values(state.dining.list)
 }
 
 export default getters

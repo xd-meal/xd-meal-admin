@@ -1,12 +1,14 @@
 import { getDiningList } from '@/api/dining'
-
+import Vue from 'vue'
 export default {
   state: {
     list: {}
   },
   mutations: {
     SET_DINING_LIST: (state, dinings) => {
-      this.$set(state, 'list', dinings)
+      dinings.forEach(el => {
+        Vue.set(state.list, el._id, el)
+      })
     },
     APPEND_DINING: (state, dining) => {
       // state.list.push(dining)
