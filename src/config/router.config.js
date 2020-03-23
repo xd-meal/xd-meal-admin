@@ -80,7 +80,7 @@ export const asyncRouterMap = [
           {
             path: '/stats/dining',
             name: 'StatsDining',
-            component: () => import('@/views/profile/basic/Index'),
+            component: () => import('@/views/stats/Dining'),
             meta: { title: '逐餐次统计', role: [1, 2] }
           },
           {
