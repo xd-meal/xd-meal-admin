@@ -71,14 +71,10 @@
 </template>
 <script>
 import moment from 'moment'
-import DescriptionList from '@/components/DescriptionList'
-import { mixin, mixinDevice } from '@/utils/mixin'
 import { PageView } from '@/layouts'
 export default {
   name: 'DiningList',
-  mixins: [mixin, mixinDevice],
   components: {
-    DescriptionList,
     PageView
   },
   computed: {

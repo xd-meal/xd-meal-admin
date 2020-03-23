@@ -45,7 +45,7 @@ export const asyncRouterMap = [
           {
             path: '/dining/add',
             name: 'AddDining',
-            component: () => import('@/views/form/BasicForm'),
+            component: () => import('@/views/dining/Add'),
             meta: { title: '添加餐次', keepAlive: false, role: [2] }
           },
           {
