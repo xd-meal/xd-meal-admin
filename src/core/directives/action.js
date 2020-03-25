@@ -20,7 +20,6 @@ const action = Vue.directive('action', {
     const role = store.getters.role
     const elVal = vnode.context.$route.meta.permission
     const permissionId = elVal instanceof String && [elVal] || elVal
-    debugger
     if (!permissionId.includes(role)) {
       return
     }
