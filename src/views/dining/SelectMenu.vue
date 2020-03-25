@@ -167,9 +167,13 @@ export default {
   methods: {
     ...mapActions(['AppendDish']),
     async addAndAppendDish () {
-      if (!await this.$refs.addDishForm.validate) return
-      const res = await this.AppendDish(this.addDishModal.form)
-      this.addDish(res._id)
+      try {
+        if (!await this.$refs.addDishForm.validate()) return
+        const res = await this.AppendDish(this.addDishModal.form)
+        this.addDish(res._id)
+      } catch (error) {
+
+      }
     },
     resetAppendDishForm () {
       this.addDishModal.form = {
