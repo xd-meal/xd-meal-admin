@@ -1,4 +1,4 @@
-import { getDishList } from '@/api/dish'
+import { addDish, getDishList } from '@/api/dish'
 
 export default {
   state: {
@@ -24,7 +24,25 @@ export default {
       })
     },
     AppendDish ({ commit }, dish) {
-      commit('APPEND_DISH', dish)
+      return new Promise((resolve, reject) => {
+        addDish(dish).then(res => {
+          commit('APPEND_DISH', res)
+          resolve(res)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
+  },
+  getters: {
+    dishLastFifty: state => {
+      return state.list.slice(state.list.length - 50, state.list.length).reverse()
+    },
+    dishSkipMealId: state => {
+      return state.list.find(el => el.title === '今天不吃饭')
+    },
+    dishInfoById: state => id => {
+      return state.list.find(el => el._id === id)
     }
   }
 }

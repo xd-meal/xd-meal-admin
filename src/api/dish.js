@@ -1,7 +1,8 @@
 import { axios } from '@/utils/request'
 
 const api = {
-  list: '/admin/dish/list'
+  list: '/admin/dish/list',
+  add: '/admin/dish'
 }
 
 export default api
@@ -11,6 +12,10 @@ export function getDishList () {
     url: api.list,
     method: 'get'
   })
+}
+
+export function addDish (dish) {
+  return axios.post(api.add, dish)
 }
 
 // id == 0 add     post
