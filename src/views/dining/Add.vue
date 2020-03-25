@@ -1,78 +1,82 @@
 <template>
   <page-view>
-    <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
-      <a-form @submit="handleSubmit" :form="form">
-        <a-form-item
+    <a-card
+      :body-style="{padding: '24px 32px'}"
+      :bordered="false"
+    >
+      <a-form-model
+        :model="form"
+        :rules="rules"
+        ref="addDiningForm"
+        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+      >
+        <a-form-model-item
           label="标题"
-          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
+          prop="title"
+        >
           <a-input
-            v-decorator="[
-              'title',
-              {rules: [{ required: true, message: '请输入标题' }]}
-            ]"
-            name="name"
-            placeholder="餐次标题" />
-        </a-form-item>
-        <a-form-item
+            v-model="form.title"
+            placeholder="餐次标题"
+          />
+        </a-form-model-item>
+        <a-form-model-item
           label="点餐时段"
-          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-          :required="true"
+          prop="orderTimes"
         >
           <a-range-picker
-            name="orderTimes"
+            v-model="form.orderTimes"
             style="width: 100%"
             showTime
-            v-decorator="[
-              'orderTimes',
-              {rules: [{ required: true, message: '请选择起止日期' }]}
-            ]" />
-        </a-form-item>
-        <a-form-item
+          />
+        </a-form-model-item>
+        <a-form-model-item
           label="取餐时段"
-          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-          :required="true"
+          prop="pickTimes"
         >
           <a-range-picker
-            name="pickTimes"
+            v-model="form.pickTimes"
             style="width: 100%"
             showTime
-            v-decorator="[
-              'pickTimes',
-              {rules: [{ required: true, message: '请选择起止日期' }]}
-            ]" />
-        </a-form-item>
-        <a-form-item
+          />
+        </a-form-model-item>
+        <a-form-model-item
           label="统计类型"
-          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-          :required="true"
+          required
         >
-          <a-radio-group v-model="stat_type">
+          <a-radio-group v-model="form.stat_type">
             <a-radio :value="0">记名</a-radio>
             <a-radio :value="1">点餐</a-radio>
           </a-radio-group>
-        </a-form-item>
-        <a-form-item
+        </a-form-model-item>
+        <a-form-model-item
           label="菜单列表"
-          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-          :required="true"
+          prop="menu"
         >
-        </a-form-item>
-      </a-form>
+          <SelectMenu v-model="form.menu" />
+        </a-form-model-item>
+        <a-form-model-item :wrapper-col="{lg: {offset: 7}, sm: {offset: 7}}">
+          <a-button
+            type="primary"
+            @click="handleSubmit"
+          >
+            提交
+          </a-button>
+        </a-form-model-item>
+      </a-form-model>
     </a-card>
   </page-view>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import moment from 'moment'
 import { PageView } from '@/layouts'
+import SelectMenu from './SelectMenu'
 export default {
   name: 'AddDining',
   components: {
-    PageView
+    PageView,
+    SelectMenu
   },
   computed: {
   },
@@ -83,12 +87,55 @@ export default {
   },
   data () {
     return {
-      form: this.$form.createForm(this),
-      stat_type: 0
+      form: {
+        title: '',
+        orderTimes: [],
+        pickTimes: [],
+        stat_type: 0,
+        menu: []
+      },
+      rules: {
+        title: [
+          { required: true, trigger: 'blur' }
+        ],
+        orderTimes: [
+          { required: true, trigger: 'change' }
+        ],
+        pickTimes: [
+          { required: true, trigger: 'change' }
+        ],
+        menu: [
+          { required: true, trigger: 'change' }
+        ]
+      }
     }
   },
   methods: {
-    handleSubmit () {}
+    ...mapActions(['AppendDining']),
+    async handleSubmit () {
+      try {
+        if (!await this.$refs.addDiningForm.validate()) return
+        const _req = {
+          title: this.form.title,
+          order_start: parseInt(this.form.orderTimes[0].format('x')),
+          order_end: (this.form.orderTimes[1].format('x')),
+          pick_start: parseInt(this.form.pickTimes[0].format('x')),
+          pick_end: parseInt(this.form.pickTimes[1].format('x')),
+          stat_type: this.form.stat_type,
+          menu: this.form.menu
+        }
+        const res = await this.AppendDining(_req)
+        if (res._id) {
+          this.$message.success('添加成功')
+          this.resetForm()
+        }
+      } catch (error) {
+        this.$message.error('添加失败 ' + (error.isAxiosError ? JSON.stringify(error.response.data) : error.message))
+      }
+    },
+    resetForm () {
+
+    }
   }
 }
 </script>
