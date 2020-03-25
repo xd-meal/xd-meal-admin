@@ -45,7 +45,7 @@ export const asyncRouterMap = [
           {
             path: '/dining/add',
             name: 'AddDining',
-            component: () => import('@/views/form/BasicForm'),
+            component: () => import('@/views/dining/Add'),
             meta: { title: '添加餐次', keepAlive: false, role: [2] }
           },
           {
@@ -58,7 +58,7 @@ export const asyncRouterMap = [
             path: '/dining/detail',
             name: 'AdvanceForm',
             component: () => import('@/views/form/advancedForm/AdvancedForm'),
-            meta: { title: '餐次详情', keepAlive: true, role: [1, 2] }
+            meta: { title: '餐次详情', keepAlive: true, role: [/* 1, 2 */] }
           }
         ]
       },
@@ -75,12 +75,12 @@ export const asyncRouterMap = [
         name: 'stats',
         component: RouteView,
         redirect: '/stats/dining',
-        meta: { title: '统计报表', icon: 'file-text', role: [1, 2] },
+        meta: { title: '统计报表', icon: 'file-text', role: [/* 1, 2 */] },
         children: [
           {
             path: '/stats/dining',
             name: 'StatsDining',
-            component: () => import('@/views/profile/basic/Index'),
+            component: () => import('@/views/stats/Dining'),
             meta: { title: '逐餐次统计', role: [1, 2] }
           },
           {
@@ -98,7 +98,7 @@ export const asyncRouterMap = [
         component: RouteView,
         redirect: '/account/center',
         name: 'account',
-        meta: { title: '帐号管理', icon: 'user', keepAlive: true, role: [1, 2] },
+        meta: { title: '帐号管理', icon: 'user', keepAlive: true, role: [/* 1, 2 */] },
         children: [
           {
             path: '/account/center',

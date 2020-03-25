@@ -71,10 +71,14 @@
 </template>
 <script>
 import moment from 'moment'
+import DescriptionList from '@/components/DescriptionList'
+import { mixin, mixinDevice } from '@/utils/mixin'
 import { PageView } from '@/layouts'
 export default {
   name: 'DiningList',
+  mixins: [mixin, mixinDevice],
   components: {
+    DescriptionList,
     PageView
   },
   computed: {
@@ -97,7 +101,7 @@ export default {
     }
   },
   mounted () {
-    this.queryDining()
+    // this.queryDining()
   },
   data () {
     return {
@@ -108,18 +112,6 @@ export default {
     }
   },
   methods: {
-    queryDining () {
-      this.$store.dispatch('FetchDiningList', [
-        this.time[0].set('hour', 0).set('minute', 0).set('second', 0).format('x'),
-        this.time[1].set('hour', 0).set('minute', 0).set('second', 0).format('x')
-      ])
-    },
-    editDining (record) {
-
-    },
-    deleteDining (record) {
-
-    }
   }
 }
 </script>

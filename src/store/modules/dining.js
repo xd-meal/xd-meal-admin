@@ -1,4 +1,4 @@
-import { getDiningList } from '@/api/dining'
+import { addDining, getDiningList } from '@/api/dining'
 import Vue from 'vue'
 export default {
   state: {
@@ -11,7 +11,7 @@ export default {
       })
     },
     APPEND_DINING: (state, dining) => {
-      // state.list.push(dining)
+      Vue.set(state.list, dining._id, dining)
     }
   },
   actions: {
@@ -26,7 +26,14 @@ export default {
       })
     },
     AppendDining ({ commit }, dining) {
-      commit('APPEND_DINING', dining)
+      return new Promise((resolve, reject) => {
+        addDining(dining).then(res => {
+          commit('APPEND_DINING', res)
+          resolve(res)
+        }).catch(error => {
+          reject(error)
+        })
+      })
     }
   }
 }
