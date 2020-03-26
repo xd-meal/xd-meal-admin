@@ -8,8 +8,8 @@
         :model="form"
         :rules="rules"
         ref="addDiningForm"
-        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        :labelCol="{xxl: {span: 7},lg: {span: 3}}"
+        :wrapperCol="{xxl: {span: 10}, lg: {span: 21} }"
       >
         <a-form-model-item
           label="标题"
