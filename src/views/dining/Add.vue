@@ -118,7 +118,7 @@ export default {
         const _req = {
           title: this.form.title,
           order_start: parseInt(this.form.orderTimes[0].format('x')),
-          order_end: (this.form.orderTimes[1].format('x')),
+          order_end: parseInt(this.form.orderTimes[1].format('x')),
           pick_start: parseInt(this.form.pickTimes[0].format('x')),
           pick_end: parseInt(this.form.pickTimes[1].format('x')),
           stat_type: this.form.stat_type,
