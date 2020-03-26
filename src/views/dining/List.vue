@@ -1,6 +1,9 @@
 <template>
   <page-view>
-    <a-form layout="inline" slot="action">
+    <a-form
+      layout="inline"
+      slot="action"
+    >
       <a-form-item>
         <a-range-picker
           v-model="time"
@@ -14,26 +17,56 @@
         </a-button>
       </a-form-item> -->
     </a-form>
-    <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
-      <a-table :dataSource="list" rowKey="_id">
-        <a-table-column title="名称" dataIndex="title" key="title" />
-        <a-table-column title="统计类型" dataIndex="stat_type">
+    <a-card
+      :body-style="{padding: '24px 32px'}"
+      :bordered="false"
+    >
+      <a-table
+        :dataSource="list"
+        rowKey="_id"
+      >
+        <a-table-column
+          title="名称"
+          dataIndex="title"
+          key="title"
+        />
+        <a-table-column
+          title="统计类型"
+          dataIndex="stat_type"
+        >
           <template slot-scope="scope">
-            <a-tag color="green" v-if="scope">点餐</a-tag>
-            <a-tag color="blue" v-else>记名</a-tag>
+            <a-tag
+              color="green"
+              v-if="scope"
+            >点餐</a-tag>
+            <a-tag
+              color="blue"
+              v-else
+            >记名</a-tag>
           </template>
         </a-table-column>
-        <a-table-column title="就餐时间" dataIndex="pick_start" key="pick_start">
+        <a-table-column
+          title="就餐时间"
+          dataIndex="pick_start"
+          key="pick_start"
+        >
           <template slot-scope="pick_start, record">
             <div>{{ pick_start | moment }}</div>
             <div>{{ record.pick_end | moment }}</div>
           </template>
         </a-table-column>
-        <a-table-column title="菜单" dataIndex="menu" key="menu">
+        <a-table-column
+          title="菜单"
+          dataIndex="menu"
+          key="menu"
+        >
           <template slot-scope="menu">
             <a-tooltip placement="left">
               <template slot="title">
-                <div v-for="(item, index) in menu" :key="index">
+                <div
+                  v-for="(item, index) in menu"
+                  :key="index"
+                >
                   <br v-if="index !== 0">
                   <div style="border-left: 3px solid #00b0ff;padding-left: 5px;">
                     <div>
@@ -52,7 +85,10 @@
             </a-tooltip>
           </template>
         </a-table-column>
-        <a-table-column title="操作" key="action">
+        <a-table-column
+          title="操作"
+          key="action"
+        >
           <template slot-scope="{record}">
             <a-button-group>
               <a-button @click="editDining(record)">编辑</a-button>
