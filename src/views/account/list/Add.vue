@@ -135,7 +135,7 @@ export default {
         username: '',
         email: '',
         wechat_corpid: '',
-        department: 1
+        department: '1'
       }
       this.$emit('input', false)
     }
