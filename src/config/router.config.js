@@ -98,19 +98,19 @@ export const asyncRouterMap = [
         component: RouteView,
         redirect: '/account/center',
         name: 'account',
-        meta: { title: '帐号管理', icon: 'user', keepAlive: true, role: [/* 1, 2 */] },
+        meta: { title: '帐号管理', icon: 'user', keepAlive: true, role: [1, 2] },
         children: [
           {
             path: '/account/center',
             name: 'center',
-            component: () => import('@/views/account/center/Index'),
+            component: () => import('@/views/account/list/Index'),
             meta: { title: '帐号列表', keepAlive: true, role: [1, 2] }
           },
           {
             path: '/account/settings',
             name: 'settings',
             component: () => import('@/views/account/settings/Index'),
-            meta: { title: '个人设置', hideHeader: true, role: [1, 2] },
+            meta: { title: '个人设置', hideHeader: true, role: [/* 1, 2 */] },
             redirect: '/account/settings/base',
             hideChildrenInMenu: true,
             children: [
