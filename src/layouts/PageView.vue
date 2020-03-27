@@ -1,27 +1,53 @@
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
     <!-- pageHeader , route meta :true on hide -->
-    <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
-      <slot slot="action" name="action"></slot>
-      <slot slot="content" name="headerContent"></slot>
-      <div slot="content" v-if="!this.$slots.headerContent && description">
+    <page-header
+      v-if="!$route.meta.hiddenHeaderContent"
+      :title="pageTitle"
+      :logo="logo"
+      :avatar="avatar"
+    >
+      <slot
+        slot="action"
+        name="action"
+      />
+      <slot
+        slot="content"
+        name="headerContent"
+      />
+      <div
+        slot="content"
+        v-if="!this.$slots.headerContent && description"
+      >
         <p style="font-size: 14px;color: rgba(0,0,0,.65)">{{ description }}</p>
         <div class="link">
           <template v-for="(link, index) in linkList">
-            <a :key="index" @click="() => { link.callback && link.callback() }">
+            <a
+              :key="index"
+              @click="() => { link.callback && link.callback() }"
+            >
               <a-icon :type="link.icon" />
               <span>{{ link.title }}</span>
             </a>
           </template>
         </div>
       </div>
-      <slot slot="extra" name="extra">
+      <slot
+        slot="extra"
+        name="extra"
+      >
         <div class="extra-img">
-          <img v-if="typeof extraImage !== 'undefined'" :src="extraImage"/>
+          <img
+            v-if="typeof extraImage !== 'undefined'"
+            :src="extraImage"
+          >
         </div>
       </slot>
       <div slot="pageMenu">
-        <div class="page-menu-search" v-if="search">
+        <div
+          class="page-menu-search"
+          v-if="search"
+        >
           <a-input-search
             style="width: 80%; max-width: 522px;"
             placeholder="请输入..."
@@ -29,10 +55,21 @@
             enterButton="搜索"
           />
         </div>
-        <div class="page-menu-tabs" v-if="tabs && tabs.items">
+        <div
+          class="page-menu-tabs"
+          v-if="tabs && tabs.items"
+        >
           <!-- @change="callback" :activeKey="activeKey" -->
-          <a-tabs :tabBarStyle="{margin: 0}" :activeKey="tabs.active()" @change="tabs.callback">
-            <a-tab-pane v-for="item in tabs.items" :tab="item.title" :key="item.key"></a-tab-pane>
+          <a-tabs
+            :tabBarStyle="{margin: 0}"
+            :activeKey="tabs.active()"
+            @change="tabs.callback"
+          >
+            <a-tab-pane
+              v-for="item in tabs.items"
+              :tab="item.title"
+              :key="item.key"
+            />
           </a-tabs>
         </div>
       </div>
