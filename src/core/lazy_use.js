@@ -12,6 +12,8 @@ import PageLoading from '@/components/PageLoading'
 // import PermissionHelper from '@/utils/helper/permission'
 import './directives/action'
 
+import xlsx from '@/utils/xlsx'
+
 VueClipboard.config.autoSetContainer = true
 
 Vue.use(Viser)
@@ -19,3 +21,4 @@ Vue.use(PageLoading)
 Vue.use(VueStorage, config.storageOptions)
 Vue.use(VueClipboard)
 // Vue.use(PermissionHelper)
+Vue.use(xlsx)
