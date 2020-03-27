@@ -75,7 +75,7 @@ export const asyncRouterMap = [
         name: 'stats',
         component: RouteView,
         redirect: '/stats/dining',
-        meta: { title: '统计报表', icon: 'file-text', role: [/* 1, 2 */] },
+        meta: { title: '统计报表', icon: 'file-text', role: [1, 2] },
         children: [
           {
             path: '/stats/dining',
@@ -87,7 +87,7 @@ export const asyncRouterMap = [
             path: '/stats/multi',
             name: 'StatsMulti',
             component: () => import('@/views/profile/advanced/Advanced'),
-            meta: { title: '多餐次合并统计', role: [1, 2] }
+            meta: { title: '多餐次合并统计', role: [/* 1, 2 */] }
           }
         ]
       },
