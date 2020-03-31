@@ -90,7 +90,7 @@ export const asyncRouterMap = [
             meta: { title: '多餐次合并统计', role: [/* 1, 2 */] }
           },
           {
-            path: '/stats/multi',
+            path: '/stats/personal',
             name: 'StatsMulti',
             component: () => import('@/views/stats/Details'),
             meta: { title: '个人明细', role: [1, 2] }
