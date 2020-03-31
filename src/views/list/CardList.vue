@@ -1,14 +1,23 @@
 <template>
-  <div class="card-list" ref="content">
+  <div
+    class="card-list"
+    ref="content"
+  >
     <a-list
       rowKey="id"
       :grid="{gutter: 24, lg: 3, md: 2, sm: 1, xs: 1}"
       :dataSource="dataSource"
     >
-      <a-list-item slot="renderItem" slot-scope="item">
+      <a-list-item
+        slot="renderItem"
+        slot-scope="item"
+      >
         <template v-if="!item || item.id === undefined">
-          <a-button class="new-btn" type="dashed">
-            <a-icon type="plus"/>
+          <a-button
+            class="new-btn"
+            type="dashed"
+          >
+            <a-icon type="plus" />
             新增产品
           </a-button>
         </template>
@@ -16,10 +25,21 @@
           <a-card :hoverable="true">
             <a-card-meta>
               <a slot="title">{{ item.title }}</a>
-              <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large"/>
-              <div class="meta-content" slot="description">{{ item.content }}</div>
+              <a-avatar
+                class="card-avatar"
+                slot="avatar"
+                :src="item.avatar"
+                size="large"
+              />
+              <div
+                class="meta-content"
+                slot="description"
+              >{{ item.content }}</div>
             </a-card-meta>
-            <template class="ant-card-actions" slot="actions">
+            <template
+              class="ant-card-actions"
+              slot="actions"
+            >
               <a>操作一</a>
               <a>操作二</a>
             </template>

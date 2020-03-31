@@ -1,8 +1,16 @@
 
 <template>
-  <page-view title="单号：234231029431" logo="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png">
+  <page-view
+    title="单号：234231029431"
+    logo="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png"
+  >
 
-    <detail-list slot="headerContent" size="small" :col="2" class="detail-layout">
+    <detail-list
+      slot="headerContent"
+      size="small"
+      :col="2"
+      class="detail-layout"
+    >
       <detail-list-item term="创建人">曲丽丽</detail-list-item>
       <detail-list-item term="订购产品">XX服务</detail-list-item>
       <detail-list-item term="创建时间">2018-08-07</detail-list-item>
@@ -10,12 +18,21 @@
       <detail-list-item term="生效日期">2018-08-07 ~ 2018-12-11</detail-list-item>
       <detail-list-item term="备注">请于两个工作日内确认</detail-list-item>
     </detail-list>
-    <a-row slot="extra" class="status-list">
-      <a-col :xs="12" :sm="12">
+    <a-row
+      slot="extra"
+      class="status-list"
+    >
+      <a-col
+        :xs="12"
+        :sm="12"
+      >
         <div class="text">状态</div>
         <div class="heading">待审批</div>
       </a-col>
-      <a-col :xs="12" :sm="12">
+      <a-col
+        :xs="12"
+        :sm="12"
+      >
         <div class="text">订单金额</div>
         <div class="heading">¥ 568.08</div>
       </a-col>
@@ -25,25 +42,32 @@
       <a-button-group style="margin-right: 4px;">
         <a-button>操作</a-button>
         <a-button>操作</a-button>
-        <a-button><a-icon type="ellipsis"/></a-button>
+        <a-button><a-icon type="ellipsis" /></a-button>
       </a-button-group>
-      <a-button type="primary" >主操作</a-button>
+      <a-button type="primary">主操作</a-button>
     </template>
 
-    <a-card :bordered="false" title="流程进度">
-      <a-steps :direction="isMobile() && 'vertical' || 'horizontal'" :current="1" progressDot>
-        <a-step title="创建项目">
-        </a-step>
-        <a-step title="部门初审">
-        </a-step>
-        <a-step title="财务复核">
-        </a-step>
-        <a-step title="完成">
-        </a-step>
+    <a-card
+      :bordered="false"
+      title="流程进度"
+    >
+      <a-steps
+        :direction="isMobile() && 'vertical' || 'horizontal'"
+        :current="1"
+        progressDot
+      >
+        <a-step title="创建项目" />
+        <a-step title="部门初审" />
+        <a-step title="财务复核" />
+        <a-step title="完成" />
       </a-steps>
     </a-card>
 
-    <a-card style="margin-top: 24px" :bordered="false" title="用户信息">
+    <a-card
+      style="margin-top: 24px"
+      :bordered="false"
+      title="用户信息"
+    >
       <detail-list>
         <detail-list-item term="用户姓名">付晓晓</detail-list-item>
         <detail-list-item term="会员卡号">32943898021309809423</detail-list-item>
@@ -54,13 +78,19 @@
       <detail-list title="信息组">
         <detail-list-item term="某某数据">725</detail-list-item>
         <detail-list-item term="该数据更新时间">2018-08-08</detail-list-item>
-        <detail-list-item ></detail-list-item>
+        <detail-list-item />
         <detail-list-item term="某某数据">725</detail-list-item>
         <detail-list-item term="该数据更新时间">2018-08-08</detail-list-item>
-        <detail-list-item ></detail-list-item>
+        <detail-list-item />
       </detail-list>
-      <a-card type="inner" title="多层信息组">
-        <detail-list title="组名称" size="small">
+      <a-card
+        type="inner"
+        title="多层信息组"
+      >
+        <detail-list
+          title="组名称"
+          size="small"
+        >
           <detail-list-item term="负责人">林东东</detail-list-item>
           <detail-list-item term="角色码">1234567</detail-list-item>
           <detail-list-item term="所属部门">XX公司-YY部</detail-list-item>
@@ -68,11 +98,19 @@
           <detail-list-item term="描述">这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...</detail-list-item>
         </detail-list>
         <a-divider style="margin: 16px 0" />
-        <detail-list title="组名称" size="small" :col="1">
+        <detail-list
+          title="组名称"
+          size="small"
+          :col="1"
+        >
           <detail-list-item term="学名">	Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..</detail-list-item>
         </detail-list>
         <a-divider style="margin: 16px 0" />
-        <detail-list title="组名称" size="small" :col="2">
+        <detail-list
+          title="组名称"
+          size="small"
+          :col="2"
+        >
           <detail-list-item term="负责人">付小小</detail-list-item>
           <detail-list-item term="角色码">1234567</detail-list-item>
         </detail-list>
@@ -80,8 +118,12 @@
 
     </a-card>
 
-    <a-card style="margin-top: 24px" :bordered="false" title="用户近半年来电记录">
-      <div class="no-data"><a-icon type="frown-o"/>暂无数据</div>
+    <a-card
+      style="margin-top: 24px"
+      :bordered="false"
+      title="用户近半年来电记录"
+    >
+      <div class="no-data"><a-icon type="frown-o" />暂无数据</div>
     </a-card>
 
     <!-- 操作 -->
@@ -100,8 +142,12 @@
       >
         <template
           slot="status"
-          slot-scope="status">
-          <a-badge :status="status | statusTypeFilter" :text="status | statusFilter"/>
+          slot-scope="status"
+        >
+          <a-badge
+            :status="status | statusTypeFilter"
+            :text="status | statusFilter"
+          />
         </template>
       </a-table>
       <a-table
@@ -112,8 +158,12 @@
       >
         <template
           slot="status"
-          slot-scope="status">
-          <a-badge :status="status | statusTypeFilter" :text="status | statusFilter"/>
+          slot-scope="status"
+        >
+          <a-badge
+            :status="status | statusTypeFilter"
+            :text="status | statusFilter"
+          />
         </template>
       </a-table>
       <a-table
@@ -124,8 +174,12 @@
       >
         <template
           slot="status"
-          slot-scope="status">
-          <a-badge :status="status | statusTypeFilter" :text="status | statusFilter"/>
+          slot-scope="status"
+        >
+          <a-badge
+            :status="status | statusTypeFilter"
+            :text="status | statusFilter"
+          />
         </template>
       </a-table>
     </a-card>

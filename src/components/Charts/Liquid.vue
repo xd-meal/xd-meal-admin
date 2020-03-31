@@ -6,7 +6,8 @@
       :width="width"
       :data="data"
       :scale="scale"
-      :padding="0">
+      :padding="0"
+    >
       <v-tooltip />
       <v-interval
         :shape="['liquid-fill-gauge']"
@@ -25,7 +26,7 @@
             };
           },
         ]"
-      ></v-interval>
+      />
       <v-guide
         v-for="(row, index) in data"
         :key="index"

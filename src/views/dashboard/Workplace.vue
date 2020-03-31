@@ -1,5 +1,8 @@
 <template>
-  <page-view :avatar="userInfo.avatar" :title="false">
+  <page-view
+    :avatar="userInfo.avatar"
+    :title="false"
+  >
     <div slot="headerContent">
       <div class="title">{{ timeFix }}，{{ userInfo.username }}<span class="welcome-text">，{{ welcome }}</span></div>
     </div>

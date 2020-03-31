@@ -8,7 +8,8 @@
           :search="true"
           @click="handleClick"
           @add="handleAdd"
-          @titleClick="handleTitleClick"></s-tree>
+          @titleClick="handleTitleClick"
+        />
       </a-col>
       <a-col :span="19">
         <s-table
@@ -19,7 +20,10 @@
           :alert="false"
           :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
         >
-          <span slot="action" slot-scope="text, record">
+          <span
+            slot="action"
+            slot-scope="text, record"
+          >
             <template v-if="$auth('table.update')">
               <a @click="handleEdit(record)">编辑</a>
               <a-divider type="vertical" />
@@ -45,7 +49,11 @@
       </a-col>
     </a-row>
 
-    <org-modal ref="modal" @ok="handleSaveOk" @close="handleSaveClose" />
+    <org-modal
+      ref="modal"
+      @ok="handleSaveOk"
+      @close="handleSaveClose"
+    />
   </a-card>
 </template>
 

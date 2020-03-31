@@ -1,10 +1,17 @@
 <template>
-  <div id="userLayout" :class="['user-layout-wrapper', device]">
+  <div
+    id="userLayout"
+    :class="['user-layout-wrapper', device]"
+  >
     <div class="container">
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.png" class="logo" alt="logo">
+            <img
+              src="~@/assets/logo.png"
+              class="logo"
+              alt="logo"
+            >
             <span class="title">今天吃啥管理后台</span>
           </a>
         </div>
@@ -13,10 +20,9 @@
         </div>
       </div>
 
-      <route-view></route-view>
+      <route-view />
 
-      <div class="footer">
-      </div>
+      <div class="footer" />
     </div>
   </div>
 </template>

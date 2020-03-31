@@ -1,6 +1,15 @@
 <template>
-  <a-modal :width="640" :visible="visible" title="任务添加" @ok="handleSubmit" @cancel="visible = false">
-    <a-form @submit="handleSubmit" :form="form">
+  <a-modal
+    :width="640"
+    :visible="visible"
+    title="任务添加"
+    @ok="handleSubmit"
+    @cancel="visible = false"
+  >
+    <a-form
+      @submit="handleSubmit"
+      :form="form"
+    >
       <a-form-item
         label="任务名称"
         :labelCol="labelCol"
@@ -13,7 +22,10 @@
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
       >
-        <a-date-picker style="width: 100%" v-decorator="['startTime', {rules:[{required: true, message: '请选择开始时间'}]}]" />
+        <a-date-picker
+          style="width: 100%"
+          v-decorator="['startTime', {rules:[{required: true, message: '请选择开始时间'}]}]"
+        />
       </a-form-item>
       <a-form-item
         label="任务负责人"
@@ -30,7 +42,7 @@
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
       >
-        <a-textarea v-decorator="['desc']"></a-textarea>
+        <a-textarea v-decorator="['desc']" />
       </a-form-item>
     </a-form>
   </a-modal>
