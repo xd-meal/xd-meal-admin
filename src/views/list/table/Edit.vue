@@ -1,6 +1,9 @@
 <template>
   <div>
-    <a-form :form="form" @submit="handleSubmit">
+    <a-form
+      :form="form"
+      @submit="handleSubmit"
+    >
 
       <a-form-item
         :labelCol="labelCol"
@@ -16,7 +19,7 @@
             {rules: [{ required: true, message: '请输入规则编号' }]}
           ]"
           :disabled="true"
-        ></a-input>
+        />
       </a-form-item>
 
       <a-form-item
@@ -26,7 +29,11 @@
         hasFeedback
         validateStatus="success"
       >
-        <a-input-number :min="1" style="width: 100%" v-decorator="['callNo', {rules: [{ required: true }]}]" />
+        <a-input-number
+          :min="1"
+          style="width: 100%"
+          v-decorator="['callNo', {rules: [{ required: true }]}]"
+        />
       </a-form-item>
 
       <a-form-item
@@ -50,7 +57,11 @@
         hasFeedback
         help="请填写一段描述"
       >
-        <a-textarea :rows="5" placeholder="..." v-decorator="['description', {rules: [{ required: true }]}]" />
+        <a-textarea
+          :rows="5"
+          placeholder="..."
+          v-decorator="['description', {rules: [{ required: true }]}]"
+        />
       </a-form-item>
 
       <a-form-item
@@ -74,12 +85,15 @@
       >
         <a-row>
           <a-col span="6">
-            <a-button type="primary" html-type="submit">提交</a-button>
+            <a-button
+              type="primary"
+              html-type="submit"
+            >提交</a-button>
           </a-col>
           <a-col span="10">
             <a-button @click="handleGoBack">返回</a-button>
           </a-col>
-          <a-col span="8"></a-col>
+          <a-col span="8" />
         </a-row>
       </a-form-item>
     </a-form>

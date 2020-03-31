@@ -1,6 +1,11 @@
 <template>
   <a-card :bordered="false">
-    <component @onEdit="handleEdit" @onGoBack="handleGoBack" :record="record" :is="currentComponet"></component>
+    <component
+      @onEdit="handleEdit"
+      @onGoBack="handleGoBack"
+      :record="record"
+      :is="currentComponet"
+    />
   </a-card>
 </template>
 

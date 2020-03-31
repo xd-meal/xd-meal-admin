@@ -1,9 +1,16 @@
 <template>
   <tooltip v-if="tips !== ''">
     <template slot="title">{{ tips }}</template>
-    <avatar :size="avatarSize" :src="src" />
+    <avatar
+      :size="avatarSize"
+      :src="src"
+    />
   </tooltip>
-  <avatar v-else :size="avatarSize" :src="src" />
+  <avatar
+    v-else
+    :size="avatarSize"
+    :src="src"
+  />
 </template>
 
 <script>

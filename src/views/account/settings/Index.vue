@@ -1,7 +1,14 @@
 <template>
   <div class="page-header-index-wide">
-    <a-card :bordered="false" :bodyStyle="{ padding: '16px 0', height: '100%' }" :style="{ height: '100%' }">
-      <div class="account-settings-info-main" :class="device">
+    <a-card
+      :bordered="false"
+      :bodyStyle="{ padding: '16px 0', height: '100%' }"
+      :style="{ height: '100%' }"
+    >
+      <div
+        class="account-settings-info-main"
+        :class="device"
+      >
         <div class="account-settings-info-left">
           <a-menu
             :mode="device == 'mobile' ? 'horizontal' : 'inline'"
@@ -41,7 +48,7 @@
           <div class="account-settings-info-title">
             <span>{{ $route.meta.title }}</span>
           </div>
-          <route-view></route-view>
+          <route-view />
         </div>
       </div>
     </a-card>

@@ -1,6 +1,9 @@
 <template>
   <span>
-    <a-icon :type="type" style="margin-right: 8px" />
+    <a-icon
+      :type="type"
+      style="margin-right: 8px"
+    />
     {{ text }}
   </span>
 </template>

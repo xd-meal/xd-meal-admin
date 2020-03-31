@@ -7,7 +7,7 @@
         <detail-list-item term="销售单号">1234123421</detail-list-item>
         <detail-list-item term="子订单">3214321432</detail-list-item>
       </detail-list>
-      <a-divider style="margin-bottom: 32px"/>
+      <a-divider style="margin-bottom: 32px" />
       <detail-list title="用户信息">
         <detail-list-item term="用户姓名">付小小</detail-list-item>
         <detail-list-item term="联系电话">18100000000</detail-list-item>
@@ -15,28 +15,32 @@
         <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路18号</detail-list-item>
         <detail-list-item term="备注">	无</detail-list-item>
       </detail-list>
-      <a-divider style="margin-bottom: 32px"/>
+      <a-divider style="margin-bottom: 32px" />
 
       <div class="title">退货商品</div>
       <s-table
         style="margin-bottom: 24px"
         row-key="id"
         :columns="goodsColumns"
-        :data="loadGoodsData">
-
-      </s-table>
+        :data="loadGoodsData"
+      />
 
       <div class="title">退货进度</div>
       <s-table
         style="margin-bottom: 24px"
         row-key="key"
         :columns="scheduleColumns"
-        :data="loadScheduleData">
+        :data="loadScheduleData"
+      >
 
         <template
           slot="status"
-          slot-scope="status">
-          <a-badge :status="status" :text="status | statusFilter"/>
+          slot-scope="status"
+        >
+          <a-badge
+            :status="status"
+            :text="status | statusFilter"
+          />
         </template>
 
       </s-table>

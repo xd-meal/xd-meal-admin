@@ -2,14 +2,34 @@
   <div>
     <a-card :bordered="false">
       <a-row>
-        <a-col :sm="8" :xs="24">
-          <head-info title="我的待办" content="8个任务" :bordered="true"/>
+        <a-col
+          :sm="8"
+          :xs="24"
+        >
+          <head-info
+            title="我的待办"
+            content="8个任务"
+            :bordered="true"
+          />
         </a-col>
-        <a-col :sm="8" :xs="24">
-          <head-info title="本周任务平均处理时间" content="32分钟" :bordered="true"/>
+        <a-col
+          :sm="8"
+          :xs="24"
+        >
+          <head-info
+            title="本周任务平均处理时间"
+            content="32分钟"
+            :bordered="true"
+          />
         </a-col>
-        <a-col :sm="8" :xs="24">
-          <head-info title="本周完成任务数" content="24个"/>
+        <a-col
+          :sm="8"
+          :xs="24"
+        >
+          <head-info
+            title="本周完成任务数"
+            content="24个"
+          />
         </a-col>
       </a-row>
     </a-card>
@@ -17,7 +37,8 @@
     <a-card
       style="margin-top: 24px"
       :bordered="false"
-      title="标准列表">
+      title="标准列表"
+    >
 
       <div slot="extra">
         <a-radio-group v-model="status">
@@ -29,13 +50,29 @@
       </div>
 
       <div class="operate">
-        <a-button type="dashed" style="width: 100%" icon="plus" @click="$refs.taskForm.add()">添加</a-button>
+        <a-button
+          type="dashed"
+          style="width: 100%"
+          icon="plus"
+          @click="$refs.taskForm.add()"
+        >添加</a-button>
       </div>
 
-      <a-list size="large" :pagination="{showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50}">
-        <a-list-item :key="index" v-for="(item, index) in data">
+      <a-list
+        size="large"
+        :pagination="{showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50}"
+      >
+        <a-list-item
+          :key="index"
+          v-for="(item, index) in data"
+        >
           <a-list-item-meta :description="item.description">
-            <a-avatar slot="avatar" size="large" shape="square" :src="item.avatar"/>
+            <a-avatar
+              slot="avatar"
+              size="large"
+              shape="square"
+              :src="item.avatar"
+            />
             <a slot="title">{{ item.title }}</a>
           </a-list-item-meta>
           <div slot="actions">
@@ -47,7 +84,7 @@
                 <a-menu-item><a>编辑</a></a-menu-item>
                 <a-menu-item><a>删除</a></a-menu-item>
               </a-menu>
-              <a>更多<a-icon type="down"/></a>
+              <a>更多<a-icon type="down" /></a>
             </a-dropdown>
           </div>
           <div class="list-content">
@@ -60,7 +97,11 @@
               <p>{{ item.startAt }}</p>
             </div>
             <div class="list-content-item">
-              <a-progress :percent="item.progress.value" :status="!item.progress.status ? null : item.progress.status" style="width: 180px" />
+              <a-progress
+                :percent="item.progress.value"
+                :status="!item.progress.status ? null : item.progress.status"
+                style="width: 180px"
+              />
             </div>
           </div>
         </a-list-item>
