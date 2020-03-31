@@ -13,6 +13,13 @@ import './core/lazy_use'
 import './permission' // permission control
 import './utils/filter' // global filter
 import './components/global.less'
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
+
+Sentry.init({
+  dsn: 'https://204c87a8afb04e3fa72c64571f9acfb1@sentry.xindong.com/5',
+  integrations: [new Integrations.Vue({ Vue, attachProps: true })]
+})
 
 Vue.config.productionTip = false
 
