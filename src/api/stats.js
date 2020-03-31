@@ -22,9 +22,9 @@ export function statCountByTime (startTime, endTime) {
   })
 }
 
-export function statPersonByTime (startTime, endTime) {
+export function statPersonByTime (corp, startTime, endTime) {
   return axios({
-    url: api.personByTime + startTime + '/' + endTime,
+    url: api.personByTime + corp + '/' + startTime + '/' + endTime,
     method: 'get'
   })
 }
