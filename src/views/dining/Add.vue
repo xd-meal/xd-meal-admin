@@ -12,6 +12,28 @@
         :wrapperCol="{xxl: {span: 10}, lg: {span: 21} }"
       >
         <a-form-model-item
+          label="预设项"
+        >
+          <div>
+            <a-date-picker v-model="preset" />
+            <a-button-group style="margin-left: 5px;">
+              <a-button
+                type="primary"
+                @click="setPreset(0)"
+              >早</a-button>
+              <a-button
+                type="primary"
+                @click="setPreset(1)"
+              >中</a-button>
+              <a-button
+                type="primary"
+                @click="setPreset(2)"
+              >晚</a-button>
+            </a-button-group>
+            警告！加班餐切勿使用预设功能！
+          </div>
+        </a-form-model-item>
+        <a-form-model-item
           label="标题"
           prop="title"
         >
@@ -87,6 +109,7 @@ export default {
   },
   data () {
     return {
+      preset: moment().millisecond(0).second(0),
       form: {
         title: '',
         orderTimes: [],
@@ -135,6 +158,43 @@ export default {
     },
     resetForm () {
 
+    },
+    setPreset (type) {
+      if (type < 0 || type > 2) {
+        return
+      }
+      this.form.title = (this.preset.month() + 1) + '月'
+      this.form.title += this.preset.date() + '日'
+      this.form.pickTimes[0] = moment(this.preset)
+      this.form.orderTimes[0] = moment(this.preset)
+        .subtract(7, 'days')
+        .weekday(3)
+        .hour(10)
+        .minute(0)
+      this.form.orderTimes[1] = moment(this.form.orderTimes[0])
+        .weekday(4)
+        .hour(16)
+      switch (type) {
+        case 0:
+          this.form.title += '早'
+          this.form.pickTimes[0].hour(8).minute(25)
+          this.form.pickTimes[1] = moment(this.form.pickTimes[0]).add(80, 'm')
+          this.form.stat_type = 0
+          break
+        case 1:
+          this.form.title += '中'
+          this.form.pickTimes[0].hour(11).minute(45)
+          this.form.pickTimes[1] = moment(this.form.pickTimes[0]).add(90, 'm')
+          this.form.stat_type = 1
+          break
+        case 2:
+          this.form.title += '晚'
+          this.form.pickTimes[0].hour(17).minute(45)
+          this.form.pickTimes[1] = moment(this.form.pickTimes[0]).add(90, 'm')
+          this.form.stat_type = 1
+          break
+      }
+      this.form.title += '餐'
     }
   }
 }
