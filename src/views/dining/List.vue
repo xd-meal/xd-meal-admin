@@ -46,6 +46,16 @@
           </template>
         </a-table-column>
         <a-table-column
+          title="点餐时间"
+          dataIndex="order_start"
+          key="order_start"
+        >
+          <template slot-scope="order_start, record">
+            <div>{{ order_start | moment }}</div>
+            <div>{{ record.order_end | moment }}</div>
+          </template>
+        </a-table-column>
+        <a-table-column
           title="就餐时间"
           dataIndex="pick_start"
           key="pick_start"
