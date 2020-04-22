@@ -169,7 +169,7 @@ export default {
       this.form.orderTimes[0] = moment(this.preset)
         .subtract(7, 'days')
         .weekday(3)
-        .hour(10)
+        .hour(8)
         .minute(0)
       this.form.orderTimes[1] = moment(this.form.orderTimes[0])
         .weekday(4)
