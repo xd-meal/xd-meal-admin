@@ -27,12 +27,12 @@
         <a-input v-model="form.email" />
       </a-form-model-item>
       <a-form-model-item
-        label="公司"
-        prop="wechat_corpid"
+        label="统计渠道"
+        prop="corp"
         :extra="role < 2 ? '分管只能添加同公司的帐号' : ''"
       >
         <a-select
-          v-model="form.wechat_corpid"
+          v-model="form.corp"
           :disabled="role < 2"
         >
           <a-select-option value="xd">
@@ -79,7 +79,7 @@ export default {
   watch: {
     '$attrs.value' (val) {
       if (this.role < 2) {
-        this.form.wechat_corpid = this.userInfo.wechat_corpid
+        this.form.corp = this.userInfo.corp
       }
     }
   },
@@ -88,7 +88,7 @@ export default {
       form: {
         username: '',
         email: '',
-        wechat_corpid: '',
+        corp: '',
         department: '1'
       },
       rules: {
@@ -98,7 +98,7 @@ export default {
         email: [
           { required: true, trigger: 'blur' }
         ],
-        wechat_corpid: [
+        corp: [
           { required: true, trigger: 'change' }
         ]
       }
@@ -109,7 +109,7 @@ export default {
   },
   mounted () {
     if (this.role < 2) {
-      this.form.wechat_corpid = this.userInfo.wechat_corpid
+      this.form.corp = this.userInfo.corp
     }
   },
   methods: {
@@ -117,7 +117,13 @@ export default {
     async onSubmit () {
       try {
         if (!await this.$refs.form.validate()) return
-        const res = await this.addUsers({ list: [this.form] })
+        const res = await this.addUsers({ list: [{
+          username: this.form.username,
+          email: this.form.email,
+          department: this.form.department,
+          channel: this.form.corp,
+          corp: this.form.corp === 'tap' ? 'xd' : this.form.corp
+        }] })
         if (res.length) {
           this.$success({
             title: '添加成功',
@@ -134,7 +140,7 @@ export default {
       this.form = {
         username: '',
         email: '',
-        wechat_corpid: '',
+        corp: '',
         department: '1'
       }
       this.$emit('input', false)

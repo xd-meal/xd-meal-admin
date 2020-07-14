@@ -3,6 +3,8 @@
     <draggable
       :list="$props.value"
       draggable=".item"
+      filter=".drag-ignore"
+      :preventOnFilter="false"
     >
       <a-list-item
         class="list-group-item item"
@@ -15,6 +17,13 @@
           <span slot="title">{{ dishInfoById(dishId).title }}</span>
         </a-list-item-meta>
         <span slot="actions">{{ dishInfoById(dishId).supplier }}</span>
+        <a-input-number
+          v-model="$props.limits[dishId]"
+          :disabled="dishId === skipMealId"
+          :min="0"
+          slot="actions"
+          class="drag-ignore"
+        />
         <a-button
           slot="actions"
           type="danger"
@@ -149,6 +158,10 @@ export default {
     value: {
       type: Array,
       default: Array
+    },
+    limits: {
+      type: Object,
+      default: Object
     }
   },
   data () {
@@ -200,9 +213,12 @@ export default {
         return
       }
       this.$props.value.push(id)
+      this.$set(this.$props.limits, id, 0)
     },
     clearExceptSkipMeal () {
       this.$emit('input', this.$props.value.filter(el => el === this.skipMealId))
+      this.$set(this.$props, 'limits', {})
+      this.$set(this.$props.limits, this.skipMealId, 0)
     }
   }
 }
