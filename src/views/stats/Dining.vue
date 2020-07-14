@@ -107,7 +107,7 @@ export default {
           _el.menu[_menu._id] = _menu
         })
         el.stat.forEach(_stat => {
-          _el.menu[_stat.menu_id][_stat.corp] = _stat.count
+          _el.menu[_stat.menu_id][_stat.channel] = _stat.count
         })
         _el.menu = Object.values(_el.menu)
         return _el
