@@ -84,8 +84,8 @@
         />
         <a-table-column
           title="公司"
-          dataIndex="wechat_corpid"
-          key="wechat_corpid"
+          dataIndex="corp"
+          key="corp"
           width="100px"
         >
           <template slot-scope="scope">
@@ -122,7 +122,7 @@ export default {
           _menu.orders.forEach(_order => {
             _ret.push({
               username: _order.userInfo.username,
-              wechat_corpid: _order.userInfo.wechat_corpid,
+              corp: _order.userInfo.corp,
               email: _order.userInfo.email,
               dining_title: _item.dining[0].title,
               dish: dishesByID[_menu.menu_id].title,
@@ -141,7 +141,7 @@ export default {
   },
   mounted () {
     if (this.role < 2) {
-      this.corp = this.userInfo.wechat_corpid
+      this.corp = this.userInfo.corp
     }
   },
   data () {
@@ -175,7 +175,7 @@ export default {
           [
             {
               username: '姓名',
-              wechat_corpid: '企业',
+              corp: '企业',
               email: '邮箱',
               dining_title: '餐次',
               dish: '菜品',
@@ -186,7 +186,7 @@ export default {
           {
             header: [
               'username',
-              'wechat_corpid',
+              'corp',
               'email',
               'dining_title',
               'dish',
