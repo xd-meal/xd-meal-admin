@@ -75,7 +75,10 @@
           label="菜单列表"
           prop="menu"
         >
-          <SelectMenu v-model="form.menu" />
+          <SelectMenu
+            v-model="form.menu"
+            :limits="form.limits"
+          />
         </a-form-model-item>
         <a-form-model-item :wrapper-col="{lg: {offset: 7}, sm: {offset: 7}}">
           <a-button
@@ -115,7 +118,8 @@ export default {
         orderTimes: [],
         pickTimes: [],
         stat_type: 0,
-        menu: []
+        menu: [],
+        limits: {}
       },
       rules: {
         title: [
@@ -145,7 +149,8 @@ export default {
           pick_start: parseInt(this.form.pickTimes[0].format('x')),
           pick_end: parseInt(this.form.pickTimes[1].format('x')),
           stat_type: this.form.stat_type,
-          menu: this.form.menu
+          menu: this.form.menu,
+          limits: this.form.limits
         }
         const res = await this.AppendDining(_req)
         if (res._id) {
