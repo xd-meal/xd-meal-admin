@@ -24,7 +24,7 @@
               <a-button
                 type="primary"
                 @click="setPreset(1)"
-              >中</a-button>
+              >午</a-button>
               <a-button
                 type="primary"
                 @click="setPreset(2)"
@@ -83,6 +83,7 @@
         <a-form-model-item :wrapper-col="{lg: {offset: 7}, sm: {offset: 7}}">
           <a-button
             type="primary"
+            :disabled="submitLock"
             @click="handleSubmit"
           >
             提交
@@ -113,6 +114,7 @@ export default {
   data () {
     return {
       preset: moment().millisecond(0).second(0),
+      submitLock: false,
       form: {
         title: '',
         orderTimes: [],
@@ -140,6 +142,7 @@ export default {
   methods: {
     ...mapActions(['AppendDining']),
     async handleSubmit () {
+      this.submitLock = true
       try {
         if (!await this.$refs.addDiningForm.validate()) return
         const _req = {
@@ -160,6 +163,9 @@ export default {
       } catch (error) {
         this.$message.error('添加失败 ' + (error.isAxiosError ? JSON.stringify(error.response.data) : error.message))
       }
+      setTimeout(() => {
+        this.submitLock = false
+      }, 1500)
     },
     resetForm () {
 
@@ -187,7 +193,7 @@ export default {
           this.form.stat_type = 0
           break
         case 1:
-          this.form.title += '中'
+          this.form.title += '午'
           this.form.pickTimes[0].hour(11).minute(45)
           this.form.pickTimes[1] = moment(this.form.pickTimes[0]).add(90, 'm')
           this.form.stat_type = 1

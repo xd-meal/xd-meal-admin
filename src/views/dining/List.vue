@@ -78,7 +78,10 @@
                   :key="index"
                 >
                   <br v-if="index !== 0">
-                  <div style="border-left: 3px solid #00b0ff;padding-left: 5px;">
+                  <div
+                    style="border-left: 3px solid;padding-left: 5px;"
+                    :style="{borderLeftColor:item.limit ? '#ff0000' : '#00b0ff'}"
+                  >
                     <div>
                       {{ item.title }}
                     </div>
@@ -87,6 +90,9 @@
                     </div>
                     <div>
                       {{ item.supplier }}
+                    </div>
+                    <div v-if="item.limit">
+                      限量 {{ item.limit }} 份
                     </div>
                   </div>
                 </div>
@@ -99,7 +105,7 @@
           title="操作"
           key="action"
         >
-          <template slot-scope="{record}">
+          <template slot-scope="record">
             <a-button-group>
               <a-button @click="editDining(record)">编辑</a-button>
               <a-popconfirm @confirm="deleteDining(record)">
@@ -164,7 +170,7 @@ export default {
 
     },
     deleteDining (record) {
-
+      console.log(record)
     }
   }
 }
