@@ -103,6 +103,21 @@
             <span v-else-if="scope === 'fantablade'">幻刃</span>
           </template>
         </a-table-column>
+        <a-table-column
+          title="统计渠道"
+          dataIndex="channel"
+          key="channel"
+          width="100px"
+        >
+          <template slot-scope="scope">
+            <span v-if="scope === 'xd'">心动</span>
+            <span v-else-if="scope === 'xde'">心动互娱</span>
+            <span v-else-if="scope === 'xc'">心珹</span>
+            <span v-else-if="scope === 'tap'">Taptap</span>
+            <span v-else-if="scope === 'xdg'">龙成</span>
+            <span v-else-if="scope === 'fantablade'">幻刃</span>
+          </template>
+        </a-table-column>
       </a-table>
     </a-card>
   </page-view>
