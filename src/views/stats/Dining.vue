@@ -64,6 +64,18 @@
             width="100px"
           />
           <a-table-column
+            title="心动互娱"
+            dataIndex="xde"
+            key="xde"
+            width="100px"
+          />
+          <a-table-column
+            title="心珹"
+            dataIndex="xc"
+            key="xc"
+            width="100px"
+          />
+          <a-table-column
             title="Taptap"
             dataIndex="tap"
             key="tap"
