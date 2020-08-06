@@ -146,6 +146,7 @@ export default {
             _ret.push({
               username: _order.userInfo.username,
               corp: _order.userInfo.corp,
+              channel: _order.userInfo.channel,
               email: _order.userInfo.email,
               dining_title: _item.dining[0].title,
               dish: dishesByID[_menu.menu_id].title,
@@ -199,6 +200,7 @@ export default {
             {
               username: '姓名',
               corp: '企业',
+              channel: '统计渠道',
               email: '邮箱',
               dining_title: '餐次',
               dish: '菜品',
@@ -210,6 +212,7 @@ export default {
             header: [
               'username',
               'corp',
+              'channel',
               'email',
               'dining_title',
               'dish',
