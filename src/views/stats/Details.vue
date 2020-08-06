@@ -16,6 +16,12 @@
           <a-select-option value="xd">
             心动
           </a-select-option>
+          <a-select-option value="xde">
+            心动互娱
+          </a-select-option>
+          <a-select-option value="xc">
+            心珹
+          </a-select-option>
           <a-select-option value="tap">
             Taptap
           </a-select-option>
@@ -90,6 +96,8 @@
         >
           <template slot-scope="scope">
             <span v-if="scope === 'xd'">心动</span>
+            <span v-else-if="scope === 'xde'">心动互娱</span>
+            <span v-else-if="scope === 'xc'">心珹</span>
             <span v-else-if="scope === 'tap'">Taptap</span>
             <span v-else-if="scope === 'xdg'">龙成</span>
             <span v-else-if="scope === 'fantablade'">幻刃</span>
@@ -141,7 +149,7 @@ export default {
   },
   mounted () {
     if (this.role < 2) {
-      this.corp = this.userInfo.corp
+      this.corp = this.userInfo.channel
     }
   },
   data () {
