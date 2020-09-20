@@ -14,7 +14,7 @@ import { axios } from '@/utils/request'
 
 export function getInfo () {
   return axios({
-    url: '/user/profile',
+    url: '/v1/user/profile',
     method: 'get',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
@@ -24,7 +24,7 @@ export function getInfo () {
 
 export function logout () {
   return axios({
-    url: '/user/logout',
+    url: '/v1/user/logout',
     method: 'get',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'

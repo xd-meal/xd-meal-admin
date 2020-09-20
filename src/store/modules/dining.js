@@ -1,4 +1,4 @@
-import { addDining, getDiningList } from '@/api/dining'
+import { addDining, getDiningList, deleteDining, generatePoster } from '@/api/dining'
 import Vue from 'vue'
 export default {
   state: {
@@ -12,6 +12,12 @@ export default {
     },
     APPEND_DINING: (state, dining) => {
       Vue.set(state.list, dining._id, dining)
+    },
+    DELETE_DINING: (state, diningID) => {
+      Vue.delete(state.list, diningID)
+    },
+    SET_POSTER_GENERATED: (state, diningID) => {
+      Vue.set(state.list.diningID, 'posterGenerated', true)
     }
   },
   actions: {
@@ -32,6 +38,26 @@ export default {
           resolve(res)
         }).catch(error => {
           reject(error)
+        })
+      })
+    },
+    DeleteDining ({ commit }, diningID) {
+      return new Promise((resolve, reject) => {
+        deleteDining(diningID).then(res => {
+          commit('DELETE_DINING', diningID)
+          resolve(res)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
+    GeneratePoster ({ commit }, diningID) {
+      return new Promise((resolve, reject) => {
+        generatePoster(diningID).then(res => {
+          commit('SET_POSTER_GENERATED', diningID)
+          resolve(res)
+        }).catch(err => {
+          reject(err)
         })
       })
     }
