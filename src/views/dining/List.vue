@@ -176,14 +176,16 @@ export default {
       this.$store.dispatch('GeneratePoster', record._id).then(res => {
         this.$message.success(res.msg)
       }).catch(err => {
-        this.$message.error('生成失败：' + err)
+        const msg = err.isAxiosError ? err.response.data.msg : err
+        this.$message.error('生成失败：' + msg)
       })
     },
     deleteDining (record) {
       this.$store.dispatch('DeleteDining', record._id).then(res => {
         this.$message.success('删除成功')
       }).catch(err => {
-        this.$message.error('删除失败：' + err)
+        const msg = err.isAxiosError ? err.response.data.msg : err
+        this.$message.error('删除失败：' + msg)
       })
     }
   }
