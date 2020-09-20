@@ -17,7 +17,7 @@ export default {
       Vue.delete(state.list, diningID)
     },
     SET_POSTER_GENERATED: (state, diningID) => {
-      Vue.set(state.list.diningID, 'posterGenerated', true)
+      Vue.set(state.list[diningID], 'posterGenerated', true)
     }
   },
   actions: {
