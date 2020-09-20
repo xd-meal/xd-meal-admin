@@ -1,8 +1,8 @@
 import { axios } from '@/utils/request'
 
 const api = {
-  list: '/admin/dish/list',
-  add: '/admin/dish'
+  list: '/v1/admin/dish/list',
+  add: '/v1/admin/dish'
 }
 
 export default api

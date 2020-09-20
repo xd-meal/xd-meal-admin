@@ -107,8 +107,14 @@
         >
           <template slot-scope="record">
             <a-button-group>
-              <a-button @click="editDining(record)">编辑</a-button>
-              <a-popconfirm @confirm="deleteDining(record)">
+              <a-button
+                @click="generatePoster(record)"
+                v-if="(new Date(record.pick_start) > new Date()) && !record.posterGenerated"
+              >生成海报</a-button>
+              <a-popconfirm
+                @confirm="deleteDining(record)"
+                v-if="(new Date(record.order_start) > new Date()) && !record.posterGenerated"
+              >
                 <template slot="title">
                   <p>确定要删除该餐次吗？</p>
                 </template>
@@ -166,11 +172,19 @@ export default {
         this.time[1].set('hour', 0).set('minute', 0).set('second', 0).format('x')
       ])
     },
-    editDining (record) {
-
+    generatePoster (record) {
+      this.$store.dispatch('GeneratePoster', record._id).then(res => {
+        this.$message.success(res.msg)
+      }).catch(err => {
+        this.$message.error('生成失败：' + err)
+      })
     },
     deleteDining (record) {
-      console.log(record)
+      this.$store.dispatch('DeleteDining', record._id).then(res => {
+        this.$message.success('删除成功')
+      }).catch(err => {
+        this.$message.error('删除失败：' + err)
+      })
     }
   }
 }

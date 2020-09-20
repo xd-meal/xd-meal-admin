@@ -1,9 +1,9 @@
 import { axios } from '@/utils/request'
 
 const api = {
-  diningByTime: '/report/order_count/',
-  countByTime: '/report/user_count/',
-  personByTime: '/report/person_detail/'
+  diningByTime: '/v1/report/order_count/',
+  countByTime: '/v1/report/user_count/',
+  personByTime: '/v1/report/person_detail/'
 }
 
 export default api
